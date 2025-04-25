@@ -1,0 +1,42 @@
+---
+--- 
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Atlas Portfolio</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <h1 class="logo">A<span>tlas</span></h1>
+        <nav class="menu">
+          <a href="/" class="active"><i class="icon">🏠</i> Inicio</a>
+          <a href="/masinformacion"><i class="icon">ℹ️</i> Más Información</a>
+          <a href="/contactos"><i class="icon">💬</i> Contactos</a>
+        </nav>
+      </aside>
+
+      <main class="hero">
+        <div class="intro">
+          <h2>Hola, mi nombre es <span class="name">Yonsn</span></h2>
+          <h1>Yo soy un <span class="typing">Programador Junior</span></h1>
+          <p>
+            Soy un programador junior que recién está comenzando como desarrollador. Tengo conocimientos básicos de Python, Java, JavaScript y estoy familiarizado con herramientas como Figma y Git.
+          </p>
+          <button class="cta">Más sobre mí</button>
+        </div>
+
+        <div class="photo-frame">
+          <div class="corner top-left"></div>
+          <img src="/perfil.png" alt="Profile" class="profile-pic" />
+          <div class="corner bottom-right"></div>
+        </div>
+      </main>
+
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')">⚙️</button>
+    </div>
+  </body>
+</html>

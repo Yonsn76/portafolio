@@ -1,0 +1,66 @@
+---
+---
+
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contactos - Atlas Portfolio</title>
+    <link rel="stylesheet" href="/styles.css">
+    <link rel="stylesheet" href="/contacto.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <aside class="sidebar">
+        <h1 class="logo">A<span>tlas</span></h1>
+        <nav class="menu">
+          <a href="/">🏠 Inicio</a>
+          <a href="/masinformacion">ℹ️ Más Información</a>
+          <a href="/contactos" class="active">💬 Contactos</a>
+        </nav>
+      </aside>
+
+      <main class="hero">
+        <div class="intro">
+          <h2>Contactos</h2>
+          <div class="contact-cards">
+            <div class="card" id="phone">
+              <div class="bg"></div>
+              <div class="blob"></div>
+              <i class="icon">📞</i>
+              <h3>Teléfono</h3>
+              <p>+51 9491623324</p>
+            </div>
+            <div class="card" id="email">
+              <div class="bg"></div>
+              <div class="blob"></div>
+              <i class="icon">✉️</i>
+              <h3>Email</h3>
+              <p>retobloyons@gmail.com</p>
+            </div>
+            <div class="card" id="address">
+              <div class="bg"></div>
+              <div class="blob"></div>
+              <i class="icon">🏠</i>
+              <h3>Dirección</h3>
+              <p>Huanuco,Huanuco, Peru</p>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <button class="theme-toggle" onclick="document.body.classList.toggle('dark')">⚙️</button>
+    </div>
+
+    <script>
+      gsap.from(".card", {
+        duration: 1,
+        opacity: 0,
+        y: 50,
+        stagger: 0.2,
+        ease: "power2.out"
+      });
+    </script>
+  </body>
+</html>
