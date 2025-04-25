@@ -1,11 +1,11 @@
 /* styles.css */
 :root {
-    --primary: #ff2c4e;
+    --primary: #2ca0ff;
     --bg-light: #f5f7fe;
     --bg-dark: #1b1b1f;
     --text-light: #1b1b1f;
     --text-dark: #f5f5f5;
-    --accent: #ff2c4e;
+    --accent: #2cff48;
     --card-bg-light: white;
     --card-bg-dark: #2a2a30;
   }
