@@ -214,4 +214,69 @@
   body.dark .theme-toggle .moon {
     display: none;
   }
-  
+
+  /* Agregar estilos responsivos */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+
+    .sidebar {
+      width: 100%;
+      padding: 1rem;
+      box-shadow: none;
+      align-items: flex-start;
+    }
+
+    .menu {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+    }
+
+    .menu a {
+      flex: 1 1 calc(50% - 1rem);
+      text-align: center;
+    }
+
+    .hero {
+      flex-direction: column;
+      padding: 2rem;
+    }
+
+    .intro {
+      text-align: center;
+    }
+
+    .photo-frame {
+      margin-top: 2rem;
+    }
+
+    .profile-pic {
+      width: 150px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .menu a {
+      flex: 1 1 100%;
+    }
+
+    .intro h2 {
+      font-size: 1.2rem;
+    }
+
+    .intro h1 {
+      font-size: 1.5rem;
+    }
+
+    .cta {
+      font-size: 0.9rem;
+      padding: 0.6rem 1rem;
+    }
+
+    .profile-pic {
+      width: 120px;
+    }
+  }
