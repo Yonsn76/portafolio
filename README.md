@@ -12,7 +12,7 @@ Página principal de bienvenida y presentación.
 ---
 
 ### ℹ️ Más Información
-Sección donde se muestra información adicional sobre ti, tus habilidades y experiencia.
+Sección donde se muestra información adicional sobre mi.
 
 ![Más Información](img/info.png)
 
