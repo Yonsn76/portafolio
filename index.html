@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Inicio</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  </head>
+  <body>
+    <div class="dashboard-card">
+      <div class="container">
+        <aside class="sidebar">
+          <h1 class="logo">Y<span>onsn</span></h1>
+          <nav class="menu">
+            <a href="index.html" class="active"><i class="icon">🏠</i> Inicio</a>
+            <a href="info.html"><i class="icon">ℹ️</i> Más Información</a>
+            <a href="contactos.html"><i class="icon">💬</i> Contactos</a>
+          </nav>
+        </aside>
+        <main class="hero">
+          <div class="intro card">
+            <h2>Hola, mi nombre es <span class="name">Yonsn</span></h2>
+            <h1>Yo soy un <span class="typing">Programador Junior</span></h1>
+            <p>
+              Soy un programador junior que recién está comenzando como
+              desarrollador. Tengo conocimientos básicos de Python, Java,
+              JavaScript y estoy familiarizado con herramientas como Figma y Git.
+            </p>
+            <button class="cta" id="btnSobreMi">Más sobre mí</button>
+          </div>
+          <div class="photo-frame card">
+            <div class="corner top-left"></div>
+            <img src="img/perfill.png" alt="Profile" class="profile-pic" />
+            <div class="corner bottom-right"></div>
+          </div>
+        </main>
+        <section id="sobre-mi" class="sobre-mi-section hidden card-modal">
+          <button id="closeSobreMi" class="close-modal" aria-label="Cerrar">✖</button>
+          <div class="console-card">
+            <div class="console-header">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="console-title">SobreMi.tsx</span>
+            </div>
+            <div class="console-body">
+              <pre id="console-typing" class="console-typing"></pre>
+            </div>
+          </div>
+        </section>
+      </div>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+        <img src="img/sol.png" class="theme-icon sun" alt="Tema claro" />
+        <img src="img/luna.png" class="theme-icon moon" alt="Tema oscuro" style="display:none;" />
+      </button>
+      <div id="modal-backdrop"></div>
+    </div>
+    <script>
+      // Animación de entrada
+      document.addEventListener("DOMContentLoaded", () => {
+        gsap.from(".sidebar", { x: -100, opacity: 0, duration: 1, ease: "power2.out" });
+        gsap.from(".hero .card", { y: 50, opacity: 0, duration: 1, delay: 0.3, stagger: 0.2 });
+      });
+
+      const sobreMiTexto = `Me llamo Yonsn y soy un apasionado del mundo de la programación y el desarrollo de software.
+Desde que descubrí cómo funciona la tecnología detrás de las aplicaciones que usamos a diario, supe que quería dedicarme a crear soluciones útiles, accesibles y eficientes.
+
+Actualmente me estoy formando como desarrollador junior, con conocimientos en Python, Java, JavaScript, Git y herramientas de diseño como Figma. Me gusta tanto el frontend como el backend y disfruto creando interfaces limpias y funcionales.
+
+Me considero una persona curiosa, autodidacta y constante. Me esfuerzo por escribir código limpio y aprender continuamente nuevas tecnologías. Además, me interesa el diseño de interfaces intuitivas, la inteligencia artificial y el desarrollo de productos con impacto social.
+
+Fuera del código, soy alguien con mucha iniciativa, motivado por los desafíos y con ganas de crecer profesionalmente. ¡Estoy listo para aportar a cualquier equipo!`;
+
+      let i = 0;
+      const speed = 18; // velocidad de tipeo (ms)
+      function typeSobreMi() {
+        const typingEl = document.getElementById("console-typing");
+        if (typingEl && i < sobreMiTexto.length) {
+          typingEl.textContent += sobreMiTexto.charAt(i);
+          i++;
+          setTimeout(typeSobreMi, speed);
+        }
+      }
+      document.getElementById("btnSobreMi").addEventListener("click", () => {
+        document.getElementById("sobre-mi").classList.add("visible");
+        document.getElementById("modal-backdrop").classList.add("visible");
+        // Reiniciar el efecto de tipeo
+        const typingEl = document.getElementById("console-typing");
+        if (typingEl) typingEl.textContent = "";
+        i = 0;
+        typeSobreMi();
+        gsap.to(document.getElementById("sobre-mi"), {
+          opacity: 1,
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
+        });
+      });
+      document.getElementById("closeSobreMi").addEventListener("click", () => {
+        document.getElementById("sobre-mi").classList.remove("visible");
+        document.getElementById("modal-backdrop").classList.remove("visible");
+      });
+      document.getElementById("modal-backdrop").addEventListener("click", () => {
+        document.getElementById("sobre-mi").classList.remove("visible");
+        document.getElementById("modal-backdrop").classList.remove("visible");
+      });
+
+      // Tema claro/oscuro
+      const themeToggle = document.getElementById("theme-toggle");
+      const body = document.body;
+      const sunIcon = document.querySelector(".theme-icon.sun");
+      const moonIcon = document.querySelector(".theme-icon.moon");
+      function updateThemeIcon() {
+        if (body.classList.contains("dark")) {
+          sunIcon.style.display = "none";
+          moonIcon.style.display = "inline";
+        } else {
+          sunIcon.style.display = "inline";
+          moonIcon.style.display = "none";
+        }
+      }
+      function toggleTheme() {
+        body.classList.toggle("dark");
+        localStorage.setItem(
+          "theme",
+          body.classList.contains("dark") ? "dark" : "light"
+        );
+        updateThemeIcon();
+      }
+      themeToggle.addEventListener("click", toggleTheme);
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          body.classList.add("dark");
+        }
+        updateThemeIcon();
+      });
+    </script>
+  </body>
+</html> 

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio - Contactos</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/contacto.css" />
+    <script defer src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  </head>
+  <body>
+    <div class="dashboard-card">
+      <div class="container">
+        <aside class="sidebar">
+          <h1 class="logo">Y<span>onsn</span></h1>
+          <nav class="menu">
+            <a href="index.html"><i class="icon">🏠</i> Inicio</a>
+            <a href="info.html"><i class="icon">ℹ️</i> Más Información</a>
+            <a href="contactos.html" class="active"><i class="icon">💬</i> Contactos</a>
+          </nav>
+        </aside>
+        <main class="hero">
+          <div class="intro card">
+            <h2>Contactos</h2>
+            <div class="contact-cards">
+              <div class="card contacto-flip">
+                <div class="content">
+                  <div class="front">
+                    <a href="tel:+519491623324">
+                      <img src="https://cdn-icons-png.flaticon.com/512/597/597177.png" alt="Teléfono" width="40" />
+                    </a>
+                    <h3>Teléfono</h3>
+                  </div>
+                  <div class="back">
+                    <p>
+                      <a href="tel:+519491623324">+51 9491623324</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card contacto-flip">
+                <div class="content">
+                  <div class="front">
+                    <a href="mailto:retobloyons@gmail.com">
+                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg" alt="Correo" width="40" />
+                    </a>
+                    <h3>Email</h3>
+                  </div>
+                  <div class="back">
+                    <p>
+                      <a href="mailto:retobloyons@gmail.com">retobloyons@gmail.com</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card contacto-flip">
+                <div class="content">
+                  <div class="front">
+                    <a href="https://www.google.com/maps/place/Huánuco,+Perú" target="_blank">
+                      <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png" alt="Ubicación" width="40" />
+                    </a>
+                    <h3>Dirección</h3>
+                  </div>
+                  <div class="back">
+                    <p>
+                      <a href="https://www.google.com/maps/place/Huánuco,+Perú" target="_blank">Huánuco, Perú</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="card contacto-flip">
+                <div class="content">
+                  <div class="front">
+                    <a href="https://github.com/yonsn" target="_blank">
+                      <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="GitHub" width="40" />
+                    </a>
+                    <h3>GitHub</h3>
+                  </div>
+                  <div class="back">
+                    <p>
+                      <a href="https://github.com/yonsn" target="_blank">github.com/yonsn</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </main>
+      </div>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Cambiar tema">
+        <img src="img/sol.png" class="theme-icon sun" alt="Tema claro" />
+        <img src="img/luna.png" class="theme-icon moon" alt="Tema oscuro" style="display:none;" />
+      </button>
+      <div id="modal-backdrop"></div>
+    </div>
+    <script>
+      // Animación de entrada
+      document.addEventListener("DOMContentLoaded", () => {
+        gsap.from(".sidebar", { x: -100, opacity: 0, duration: 1, ease: "power2.out" });
+        gsap.from(".card", { y: 50, opacity: 0, duration: 1, delay: 0.3, stagger: 0.2 });
+      });
+
+      // Tema claro/oscuro
+      const themeToggle = document.getElementById("theme-toggle");
+      const body = document.body;
+      const sunIcon = document.querySelector(".theme-icon.sun");
+      const moonIcon = document.querySelector(".theme-icon.moon");
+      function updateThemeIcon() {
+        if (body.classList.contains("dark")) {
+          sunIcon.style.display = "none";
+          moonIcon.style.display = "inline";
+        } else {
+          sunIcon.style.display = "inline";
+          moonIcon.style.display = "none";
+        }
+      }
+      function toggleTheme() {
+        body.classList.toggle("dark");
+        localStorage.setItem(
+          "theme",
+          body.classList.contains("dark") ? "dark" : "light"
+        );
+        updateThemeIcon();
+      }
+      themeToggle.addEventListener("click", toggleTheme);
+      document.addEventListener("DOMContentLoaded", () => {
+        const savedTheme = localStorage.getItem("theme");
+        if (savedTheme === "dark") {
+          body.classList.add("dark");
+        }
+        updateThemeIcon();
+      });
+    </script>
+  </body>
+</html> 

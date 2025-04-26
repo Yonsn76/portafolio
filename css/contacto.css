@@ -1,0 +1,244 @@
+.contact-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    padding: 40px 0;
+    align-items: center;
+    max-height: 70vh;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #ff9966 #f0f0f0;
+  }
+  
+  /* Scrollbar personalizado para navegadores basados en Webkit */
+  .contact-cards::-webkit-scrollbar {
+    width: 8px;
+    background: #f0f0f0;
+    border-radius: 8px;
+  }
+  .contact-cards::-webkit-scrollbar-thumb {
+    background: #ff9966;
+    border-radius: 8px;
+  }
+  
+  body{
+    align-items: center;
+  }
+  
+  .card {
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+    background: none;
+  }
+  
+  .bg {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    width: 190px;
+    height: 240px;
+    z-index: 2;
+    background: rgba(255, 255, 255, .95);
+    backdrop-filter: blur(24px);
+    border-radius: 10px;
+    overflow: hidden;
+    outline: 2px solid white;
+  }
+  
+  .blob {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    opacity: 1;
+    filter: blur(12px);
+    animation: blob-bounce 5s infinite ease;
+  }
+  
+  @keyframes blob-bounce {
+    0% {
+      transform: translate(-100%, -100%) translate3d(0, 0, 0);
+    }
+    25% {
+      transform: translate(-100%, -100%) translate3d(100%, 0, 0);
+    }
+    50% {
+      transform: translate(-100%, -100%) translate3d(100%, 100%, 0);
+    }
+    75% {
+      transform: translate(-100%, -100%) translate3d(0, 100%, 0);
+    }
+    100% {
+      transform: translate(-100%, -100%) translate3d(0, 0, 0);
+    }
+  }
+  
+  .card .icon {
+    font-size: 3em;
+    z-index: 3;
+  }
+  
+  .card h3 {
+    margin: 10px 0;
+    z-index: 3;
+  }
+  
+  .card p {
+    font-size: 0.9em;
+    z-index: 3;
+  }
+  
+  #phone .blob {
+    background-color: #ff0000;
+  }
+  
+  #email .blob {
+    background-color: #00ff00;
+  }
+  
+  #address .blob {
+    background-color: #0000ff;
+  }
+
+  #github .blob {
+    background-color: #ab0fe9;
+  }
+  
+  .dark .card {
+    box-shadow: 20px 20px 60px #1a1a1a, -20px -20px 60px #2c2c2c;
+  }
+  
+  .dark .bg {
+    background: rgba(0, 0, 0, .8);
+    outline: 2px solid #333;
+  }
+  
+  .dark .card h3,
+  .dark .card p {
+    color: #ffffff;
+  }
+
+/* Mejora del diseño del título */
+h2 {
+  font-size: 2.8rem;
+  font-weight: bold;
+  text-align: center;
+  color: #ff5e62;
+  margin-bottom: 30px;
+  margin-top: 0;
+  padding-top: 20px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  background: linear-gradient(90deg, #ff9966 0%, #ff5e62 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: fadeDown 1s cubic-bezier(.4,2,.6,1);
+}
+
+@keyframes fadeDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-40px) scale(0.95);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.intro.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 30px;
+}
+
+/* Tarjetas flip de contacto */
+.card.contacto-flip {
+  width: 220px;
+  height: 260px;
+  perspective: 1000px;
+  background: none;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+  border-radius: 12px;
+  margin: 20px;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card.contacto-flip .content {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(.4,2,.6,1);
+  border-radius: 12px;
+  box-shadow: 0px 0px 10px 1px #000000ee;
+}
+
+.card.contacto-flip:hover .content {
+  transform: rotateY(180deg);
+}
+
+.card.contacto-flip .front,
+.card.contacto-flip .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.4s, color 0.4s;
+}
+
+.card.contacto-flip .front {
+  z-index: 2;
+  background: #f7f7f7;
+  color: #222;
+}
+
+.card.contacto-flip .back {
+  transform: rotateY(180deg);
+  background: linear-gradient(120deg, #ff9966 0%, #ff5e62 100%);
+  color: #fff;
+  z-index: 1;
+}
+
+.card.contacto-flip .icon {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+.card.contacto-flip h3 {
+  margin: 0;
+  font-size: 1.2em;
+  letter-spacing: 1px;
+}
+
+.card.contacto-flip .back a {
+  color: #fff;
+  text-decoration: underline;
+  font-size: 1.1em;
+}
+
+/* Modo oscuro: frente verde claro, reverso naranja */
+body.dark .card.contacto-flip .front {
+  background: #2ecc40;
+  color: #fff;
+}
+body.dark .card.contacto-flip .back {
+  background: linear-gradient(120deg, #ff9966 0%, #ff5e62 100%);
+  color: #fff;
+} 
